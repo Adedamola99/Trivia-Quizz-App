@@ -4,6 +4,8 @@ import { nanoid } from 'nanoid';
 const QuestionPage = (props) => {
   const {correctAnswer, allAnswers, setCount, question} = props;
   const [answer, setAnswer] = React.useState(answerData())
+  const regex = /(&quot;)|(&#039;t)|(&#039;s)|(&#039;)|(&amp;!)|(&amp;)|(&uuml;)/gi;
+  const otherRegex = /&eacute;/gi;
 
   function answerData() {
     const arr = [];
@@ -50,7 +52,7 @@ const QuestionPage = (props) => {
          onClick = {props.click ? (e) => handleAnswerCheck(e, item.id) : null}
          style = {!props.startCheck ? styles : item.picked && item.answer !== correctAnswer ? wrongAnswer : undefined} 
       >
-        {item.answer}
+        {item.answer.replace(regex, "").replace(otherRegex, "e")}
       </p>
     )
   })
@@ -60,7 +62,7 @@ const QuestionPage = (props) => {
     <div>
       <div className="questions">
         <div className="question">
-          <h3 className="question-title">{question}</h3>
+          <h3 className="question-title">{question.replace(regex, "").replace(otherRegex, "e")}</h3>
           <div className="options">
             {answerItem}
           </div>
