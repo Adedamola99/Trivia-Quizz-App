@@ -173,6 +173,42 @@ p{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+/* Loading Page */
+.dot-box {
+    place-items: center;
+    display: grid;
+    height: 100vh;
+}
+
+.dots {
+    width: 56px;
+    height: 26.9px;
+    background: radial-gradient(circle closest-side,#293264 90%,#0000) 0%   50%,
+           radial-gradient(circle closest-side,#293264 90%,#0000) 50%  50%,
+           radial-gradient(circle closest-side,#293264 90%,#0000) 100% 50%;
+    background-size: calc(100%/3) 13.4px;
+    background-repeat: no-repeat;
+    animation: dots-7ar3yq 1s infinite linear;
+ }
+ 
+ @keyframes dots-7ar3yq {
+    20% {
+       background-position: 0%   0%, 50%  50%,100%  50%;
+    }
+ 
+    40% {
+       background-position: 0% 100%, 50%   0%,100%  50%;
+    }
+ 
+    60% {
+       background-position: 0%  50%, 50% 100%,100%   0%;
+    }
+ 
+    80% {
+       background-position: 0%  50%, 50%  50%,100% 100%;
+    }
+ }
+
 @media only screen and (max-width: 870px) {
     .options{
         display: flex;

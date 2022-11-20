@@ -1,18 +1,27 @@
 import React from 'react'
 import IntroPage from "./Component/IntroPage";
 import QuizzPage from './Component/QuizzPage';
+import { useState, useEffect} from "react";
+// import { Spinner } from "@chakra-ui/react";
 
 function App() {
-  const [startGame, setStartGame] = React.useState(false);
-  const [data, setData] = React.useState([]);
-  const [displayHome, setDisplayHome] = React.useState(true);
+  const [startGame, setStartGame] = useState(false);
+  const [data, setData] = useState([]);
+  const [displayHome, setDisplayHome] = useState(true);
+  const [pageLoading, setPageLoading] = useState(true);
   
-  
-  React.useEffect(() => {
-    fetch("https://opentdb.com/api.php?amount=10&category=18&type=multiple")
-    .then(res => res.json())
-    .then(data => setData(data.results)) 
+  useEffect(() => {
+      async function fetchData() {
+        const response = await fetch("https://opentdb.com/api.php?amount=10&category=18&type=multiple");
+        const quizData = await response.json();
+        setPageLoading(false)
+        setData(quizData.results)
+      }
+      fetchData();
   },[startGame])
+
+
+  
 
   
   const displayUpdatedHomePage = () => {
@@ -23,9 +32,10 @@ function App() {
     <div>
       { displayHome ?
        
-      <IntroPage  handleHomeDisplay={displayUpdatedHomePage}/> :
+      <IntroPage  handleHomeDisplay={displayUpdatedHomePage}/> : pageLoading ? <div className="dot-box"><div className="dots"></div></div> :
         
       <QuizzPage data={data} setStartGame={setStartGame}/>
+      
       }
     </div>
   )

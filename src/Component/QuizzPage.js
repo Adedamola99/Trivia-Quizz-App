@@ -4,7 +4,8 @@ import SubmitButton from './SubmitButton';
 import { nanoid } from 'nanoid';
 
 const QuizzPage = (props) => {
-  const{data} = props;  
+  const {data} = props; 
+  console.log(data); 
 
   const [newData, setNewData] = React.useState(newDatas());
   const [click, setClick] = React.useState(true);
@@ -16,6 +17,8 @@ const QuizzPage = (props) => {
     data.forEach(items => {
       arr.push({...items, id: nanoid()})
     })
+
+    
     return arr
   }
 
