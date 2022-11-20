@@ -5,7 +5,6 @@ import { nanoid } from 'nanoid';
 
 const QuizzPage = (props) => {
   const {data} = props; 
-  console.log(data); 
 
   const [newData, setNewData] = React.useState(newDatas());
   const [click, setClick] = React.useState(true);

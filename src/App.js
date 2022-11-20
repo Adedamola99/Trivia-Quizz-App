@@ -2,7 +2,6 @@ import React from 'react'
 import IntroPage from "./Component/IntroPage";
 import QuizzPage from './Component/QuizzPage';
 import { useState, useEffect} from "react";
-// import { Spinner } from "@chakra-ui/react";
 
 function App() {
   const [startGame, setStartGame] = useState(false);
@@ -19,9 +18,6 @@ function App() {
       }
       fetchData();
   },[startGame])
-
-
-  
 
   
   const displayUpdatedHomePage = () => {
