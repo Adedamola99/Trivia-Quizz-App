@@ -1,8 +1,8 @@
 # A Trivia Quiz Application 
 
 <p>This is a Trivia Quiz Application that marks and grade student based on 10 random computer different questions</p>
-<h1>Table of Content</h1>
 
+<h1>Table of Content</h1>
 <ul>
   <li>Overview
     <ul>
