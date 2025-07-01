@@ -34,10 +34,6 @@ const QuizPage = ({
     }
   };
 
-  const goToPage = (pageIndex) => {
-    setCurrentQuestionIndex(pageIndex * questionsPerPage);
-  };
-
   const progress = ((currentPage + 1) / totalPages) * 100;
 
   return (
@@ -111,66 +107,6 @@ const QuizPage = ({
             <ChevronLeft size={20} />
             Previous
           </button>
-
-          {/* <div className="flex gap-2">
-            {Array.from({ length: totalPages }, (_, i) => (
-              <button
-                key={i}
-                onClick={() => goToPage(i)}
-                className={`w-3 h-3 rounded-full transition-colors ${
-                  i === currentPage
-                    ? "bg-white"
-                    : "bg-white/40 hover:bg-white/60"
-                }`}
-                title={`Go to page ${i + 1}`}
-              />
-            ))}
-          </div> */}
-
-          <div className="flex gap-2">
-            {totalPages <= 10 ? (
-              // Show all circles if 10 or fewer pages
-              Array.from({ length: totalPages }, (_, i) => (
-                <button
-                  key={i}
-                  onClick={() => goToPage(i)}
-                  className={`w-3 h-3 rounded-full transition-colors ${
-                    i === currentPage
-                      ? "bg-white"
-                      : "bg-white/40 hover:bg-white/60"
-                  }`}
-                  title={`Go to page ${i + 1}`}
-                />
-              ))
-            ) : (
-              // Show condensed pagination for more than 10 pages
-              <div className="flex items-center gap-2">
-                <span className="text-white/70 text-sm">
-                  Page {currentPage + 1} of {totalPages}
-                </span>
-                <div className="flex gap-1">
-                  {currentPage > 0 && (
-                    <button
-                      onClick={() => goToPage(0)}
-                      className="w-3 h-3 rounded-full bg-white/40 hover:bg-white/60 transition-colors"
-                      title="Go to first page"
-                    />
-                  )}
-                  <div
-                    className="w-3 h-3 rounded-full bg-white"
-                    title={`Current page ${currentPage + 1}`}
-                  />
-                  {currentPage < totalPages - 1 && (
-                    <button
-                      onClick={() => goToPage(totalPages - 1)}
-                      className="w-3 h-3 rounded-full bg-white/40 hover:bg-white/60 transition-colors"
-                      title="Go to last page"
-                    />
-                  )}
-                </div>
-              </div>
-            )}
-          </div>
 
           {currentPage === totalPages - 1 ? (
             <button
