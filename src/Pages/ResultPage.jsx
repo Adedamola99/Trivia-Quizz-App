@@ -71,7 +71,7 @@ const ResultPage = ({
                 disabled={!playerName.trim()}
                 className="bg-green-500 text-white px-6 py-2 rounded-xl hover:bg-green-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
               >
-                Save Score
+                Save your score
               </button>
             </div>
           )}
